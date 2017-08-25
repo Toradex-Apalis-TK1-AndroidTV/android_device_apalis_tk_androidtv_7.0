@@ -14,6 +14,23 @@
 # limitations under the License.
 #
 
+$(call inherit-product, device/nvidia/shield-common/shield.mk)
+$(call inherit-product, 3rdparty/google/gms-apps/tv/gms.mk)
+$(call inherit-product-if-exists, frameworks/base/data/videos/VideoPackage2.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/t210/nvflash.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/touch/raydium.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/touch/sharp.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/touch/nvtouch.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/multimedia/base.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/multimedia/firmware.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/camera/full.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/services/nvcpl.mk)
+$(call inherit-product-if-exists, vendor/nvidia/tegra/core/android/services/analyzer.mk)
+$(call inherit-product, vendor/nvidia/tegra/core/android/services/edid.mk)
+$(call inherit-product-if-exists, vendor/nvidia/tegra/core/android/t124/full.mk)
+$(call inherit-product-if-exists, vendor/nvidia/tegra/core/nvidia-tegra-vendor.mk)
+$(call inherit-product, vendor/nvidia/shieldtech/common/shieldtech.mk)
+
 # Include drawables for various densities.
 PRODUCT_AAPT_CONFIG := normal large xlarge tvdpi hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -24,11 +41,17 @@ PRODUCT_CHARACTERISTICS := tv
 TARGET_TEGRA_VERSION := t124
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-$(call inherit-product, vendor/nvidia/shield/jetson-tk1.mk)
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
+
+# Boot Animation
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bootanimation.zip:system/media/bootanimation.zip
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayouts/AliTV_Remote_V1_Airmouse.kl:system/usr/keylayout/AliTV_Remote_V1_Airmouse.kl \
+    $(LOCAL_PATH)/keylayouts/AliTV_Remote_V1_Airmouse.idc:system/usr/idc/AliTV_Remote_V1_Airmouse.idc \
+    $(LOCAL_PATH)/keylayouts/ADT-1_Remote.kl::system/usr/keylayout/ADT-1_Remote.kl
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
@@ -82,15 +105,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/firmware/fw_bcmdhd_56.bin:system/vendor/firmware/fw_bcmdhd.bin \
     $(LOCAL_PATH)/firmware/nvram.txt:system/etc/nvram.txt
 
-# Leanback and LiveTV
-PRODUCT_PACKAGES += LeanbackIme \
-                    LeanbackLauncher \
-		    TvProvider \
-                    TvSettings \
-                    tv_input.default
-
-$(call inherit-product, device/nvidia/shield-common/shield.mk)
-
-# Leanback Gapps
-$(call inherit-product, vendor/google/jetson/jetson-vendor.mk)
-$(call inherit-product, vendor/google/atv/atv-vendor.mk)
+# Leanback Launcher
+PRODUCT_PACKAGES += \
+    AppDrawer \
+    LeanbackLauncher \
+    LeanbackCustomize \
+    LeanbackIme \
+    TvProvider \
+    TvSettings \
+    tv_input.default \
+    TV

@@ -30,7 +30,5 @@ allow priv_app system_app_data_file:file r_file_perms;
 # Read /mnt/asec/<pkg-cid>/base.apk which is mounted from app on sdcard (asec)
 allow priv_app asec_apk_file:file r_file_perms;
 
-# allow priv-app pci_device access
-allow priv_app device:dir read;
-allow priv_app sysfs_pci_device:dir search;
-allow priv_app system_app_data_file:dir getattr;
+# dvb_device access
+allow priv_app dvb_device:chr_file rw_file_perms;

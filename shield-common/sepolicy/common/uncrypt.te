@@ -25,7 +25,3 @@ allow uncrypt fscheck_block_device:blk_file rw_file_perms;
 allow uncrypt shell_exec:file rx_file_perms;
 allow uncrypt system_file:file rx_file_perms;
 set_prop(uncrypt, system_prop);
-
-# allow device write
-allow uncrypt device:dir write;
-allow uncrypt kmsg_device:chr_file write;

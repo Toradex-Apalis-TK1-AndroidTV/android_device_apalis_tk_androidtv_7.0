@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+REFERENCE_DEVICE := shieldtablet
+
 # SELinux
 BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/common
 

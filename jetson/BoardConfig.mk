@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2017 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,14 +25,16 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a15
 
+TARGET_KERNEL_DT_NAME := tegra124-
+
 # Board
 TARGET_BOARD_PLATFORM := tegra
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/nvidia/shield
-TARGET_KERNEL_CONFIG := lineageos_jetson_defconfig
+#TARGET_KERNEL_SOURCE := kernel/nvidia/shield
+#TARGET_KERNEL_CONFIG := tegra12_android_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1
 
 TARGET_USERIMAGES_USE_EXT4 := true

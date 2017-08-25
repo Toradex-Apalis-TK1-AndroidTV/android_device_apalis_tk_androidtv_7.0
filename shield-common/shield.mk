@@ -14,20 +14,6 @@
 # limitations under the License.
 #
 
-# Overlay
-ifneq ($(TARGET_TEGRA_DISABLE_OVERLAY),true)
-    DEVICE_PACKAGE_OVERLAYS += \
-         device/nvidia/shield-common/overlay/common
-
-    ifeq ($(PRODUCT_IS_ATV),true)
-        DEVICE_PACKAGE_OVERLAYS += \
-            device/nvidia/shield-common/overlay/tv
-    else
-        DEVICE_PACKAGE_OVERLAYS += \
-            device/nvidia/shield-common/overlay/tablet-do
-    endif
-endif
-
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
@@ -131,9 +117,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7210.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7212.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7214.kl:system/usr/keylayout/Vendor_0955_Product_7214.kl
-
-# Widevine shim
-PRODUCT_PACKAGES += libwvm_shim
 
 # Wifi
 # All Shield devices xurrently use broadcom wifi / bluetooth modules
