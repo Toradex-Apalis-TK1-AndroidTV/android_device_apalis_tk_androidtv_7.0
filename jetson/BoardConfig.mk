@@ -35,7 +35,7 @@ TARGET_NO_RADIOIMAGE := true
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/nvidia/shield
 #TARGET_KERNEL_CONFIG := tegra12_android_defconfig
-BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1
+BOARD_KERNEL_CMDLINE := androidboot.hardware=jetson-tk1 usb_port_owner_info=2
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216

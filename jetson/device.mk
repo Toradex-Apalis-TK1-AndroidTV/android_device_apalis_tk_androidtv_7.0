@@ -40,9 +40,12 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_CHARACTERISTICS := tv
 TARGET_TEGRA_VERSION := t124
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.name
+
+# Define Netflix nrdp properties
+PRODUCT_COPY_FILES += $(LOCAL_PATH)/nrdp.modelgroup.xml:system/etc/permissions/nrdp.modelgroup.xml
 
 # Boot Animation
 PRODUCT_COPY_FILES += \
@@ -111,6 +114,7 @@ PRODUCT_PACKAGES += \
     LeanbackLauncher \
     LeanbackCustomize \
     LeanbackIme \
+    Provision \
     TvProvider \
     TvSettings \
     tv_input.default \
