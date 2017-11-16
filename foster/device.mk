@@ -58,10 +58,11 @@ PRODUCT_COPY_FILES += \
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    device/nvidia/jetson/overlay
+    device/nvidia/foster/overlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    busybox \
     fstab.jetson-tk1 \
     init.recovery.jetson-tk1.rc \
     init.jetson-tk1.rc \
